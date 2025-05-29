@@ -905,11 +905,20 @@ class FormUI
 			'title' => $post_button
 		), false, true);
 
+		$moderation_warning = new HTMLTag ('p', array(
+			'class' => 'hashover-moderation-warning',
+			'innerHTML' => 'Your comment will be held for moderation'
+		));
+
 		// Add "Post Comment" element to main form buttons wrapper element
 		$main_form_buttons_wrapper->appendChild ($main_post_button);
 
 		// Add main form button wrapper to main form footer element
 		$main_form_footer->appendChild ($main_form_buttons_wrapper);
+
+		if ($this->setup->usesModeration === true) {
+			$main_form_footer->appendChild ($moderation_warning);
+		}
 
 		// Add main form footer to main form element
 		$main_form->appendChild ($main_form_footer);

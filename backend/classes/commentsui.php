@@ -435,6 +435,15 @@ class CommentsUI extends FormUI
 		// Add reply form buttons wrapper to reply form footer element
 		$reply_form_footer->appendChild ($reply_form_buttons_wrapper);
 
+		$moderation_warning = new HTMLTag ('p', array(
+			'class' => 'hashover-moderation-warning',
+			'innerHTML' => 'Your comment will be held for moderation'
+		));
+
+		if ($this->setup->usesModeration === true) {
+			$reply_form_footer->appendChild ($moderation_warning);
+		}
+
 		// Add reply form footer to reply form element
 		$reply_form->appendChild ($reply_form_footer);
 

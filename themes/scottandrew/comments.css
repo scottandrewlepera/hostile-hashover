@@ -1228,6 +1228,11 @@ conditions, unless such conditions are required by law.
 	font-size: 0.8rem;
 }
 
+.hashover-moderation-warning {
+  padding: 1rem;
+  text-align: center;
+}
+
 /* end overrides */
 
 @media only screen and (max-width: 640px) {
