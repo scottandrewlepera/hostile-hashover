@@ -31,7 +31,7 @@ class SafeSettings
 	// Primary settings
 	public $language		= 'auto';			// UI language, for example 'en_US', 'de_DE', etc. 'auto' to use system locale
 	public $theme			= 'default';			// Comment Cascading Style Sheet (CSS)
-	public $allowsImages		= true;				// Whether external image URLs wrapped in [img] tags are embedded
+	public $allowsImages		= false;				// Whether external image URLs wrapped in [img] tags are embedded
 	public $allowsLikes		= true;				// Whether a "Like" link is displayed
 	public $allowsDislikes		= false;			// Whether a "Dislike" link is displayed; allowing Reddit-style voting
 	public $usesAjax		= true;				// Whether AJAX is used for posting, editing, and loading comments
@@ -80,4 +80,6 @@ class SafeSettings
 	public $gravatarForce		= false;			// Whether to force the themed Gravatar images instead of an avatar image
 	public $minifiesJavascript	= false;			// Whether JavaScript output should be minified
 	public $minifyLevel		= 1;				// How much to minify JavaScript code, options: 1, 2, 3, 4
+
+	public $allowHTML		= false; // allow/disallow HTML in comments
 }

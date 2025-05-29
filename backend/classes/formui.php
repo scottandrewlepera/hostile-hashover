@@ -847,7 +847,7 @@ class FormUI
 		}
 
 		// Create and add allowed HTML revealer hyperlink
-		if ($this->mode !== 'php') {
+		if ($this->setup->allowHTML === true && $this->mode !== 'php') {
 			$main_form_links_wrapper->appendChild ($this->formatting ('main'));
 		}
 

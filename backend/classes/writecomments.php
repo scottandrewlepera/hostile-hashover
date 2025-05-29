@@ -324,15 +324,17 @@ class WriteComments extends Secrets
 		$code = str_ireplace ($this->dataSearch, $this->dataReplace, $code);
 
 		// Unescape allowed HTML tags
-		foreach ($this->htmlTagSearch as $tag) {
-			// Create search array of escaped opening and closing tags
-			$escaped_tags = array ('&lt;' . $tag . '&gt;', '&lt;/' . $tag . '&gt;');
+		if ($this->setup->allowHTML === true) {
+			foreach ($this->htmlTagSearch as $tag) {
+				// Create search array of escaped opening and closing tags
+				$escaped_tags = array ('&lt;' . $tag . '&gt;', '&lt;/' . $tag . '&gt;');
 
-			// Create search array of opening and closing tags
-			$text_tags = array ('<' . $tag . '>', '</' . $tag . '>');
+				// Create search array of opening and closing tags
+				$text_tags = array ('<' . $tag . '>', '</' . $tag . '>');
 
-			// Unescape opening and closed tags
-			$code = str_ireplace ($escaped_tags, $text_tags, $code);
+				// Unescape opening and closed tags
+				$code = str_ireplace ($escaped_tags, $text_tags, $code);
+			}
 		}
 
 		// And return new HTML

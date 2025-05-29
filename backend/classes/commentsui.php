@@ -390,7 +390,7 @@ class CommentsUI extends FormUI
 		}
 
 		// Create and add allowed HTML revealer hyperlink
-		if ($this->mode !== 'php') {
+		if ($this->setup->allowHTML === true && $this->mode !== 'php') {
 			$reply_form_links_wrapper->appendChild ($this->formatting ('reply', $permalink));
 		}
 
@@ -579,7 +579,7 @@ class CommentsUI extends FormUI
 		}
 
 		// Create and add allowed HTML revealer hyperlink
-		if ($this->mode !== 'php') {
+		if ($this->setup->allowHTML === true && $this->mode !== 'php') {
 			$edit_form_links_wrapper->appendChild ($this->formatting ('edit', $permalink));
 		}
 
