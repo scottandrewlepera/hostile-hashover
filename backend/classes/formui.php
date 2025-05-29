@@ -1024,7 +1024,8 @@ class FormUI
 			}
 
 			// Check if there is more than one comment
-			if ($this->commentCounts['total'] > 2) {
+			if ($this->setup->showSortOptions === true && 
+					$this->commentCounts['total'] > 2) {
 				// If so, create wrapper element for sort dropdown menu
 				$sort_wrapper = new HTMLTag ('span', array (
 					'id' => $this->prefix ('sort', false),

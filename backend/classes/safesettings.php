@@ -82,4 +82,5 @@ class SafeSettings
 	public $minifyLevel		= 1;				// How much to minify JavaScript code, options: 1, 2, 3, 4
 
 	public $allowHTML		= false; // allow/disallow HTML in comments
+	public $showSortOptions = false;  // show/suppress sorting dropdown UI
 }
