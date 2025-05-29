@@ -10,6 +10,8 @@ HashOver.prototype.formattingOnclick = function (type, permalink)
 	// Get "Formatting" hyperlink element
 	var link = this.getElement (type + '-formatting' + permalink);
 
+	if (!link) return;
+
 	// Get formatting message element
 	var message = this.getElement (type + '-formatting-message' + permalink);
 
