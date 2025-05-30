@@ -23,7 +23,7 @@ conditions, unless such conditions are required by law.
 
 .hashover,
 .hashover textarea {
-	line-height: 1.5em;
+	/* line-height: 1.5em; */
 }
 
 .hashover > div {
@@ -246,16 +246,16 @@ conditions, unless such conditions are required by law.
 .hashover .hashover-inputs > * {
 	display: table-cell;
 	vertical-align: middle;
-	line-height: 16px;
+	/* line-height: 16px; */
 }
 
 .hashover .hashover-name-input input,
 .hashover .hashover-password-input input,
 .hashover .hashover-email-input input,
 .hashover .hashover-website-input input {
-	background-image: -webkit-linear-gradient(#F0F0F0, #FCFCFC, #FCFCFC, #FCFCFC);
+	/* background-image: -webkit-linear-gradient(#F0F0F0, #FCFCFC, #FCFCFC, #FCFCFC);
 	background-image: -moz-linear-gradient(#F0F0F0, #FCFCFC, #FCFCFC, #FCFCFC);
-	background-image: linear-gradient(#F0F0F0, #FCFCFC, #FCFCFC, #FCFCFC);
+	background-image: linear-gradient(#F0F0F0, #FCFCFC, #FCFCFC, #FCFCFC); */
 }
 
 .hashover .hashover-name-input,
@@ -315,7 +315,7 @@ conditions, unless such conditions are required by law.
 .hashover form textarea,
 .hashover .hashover-inputs input,
 .hashover .hashover-submit {
-	padding: 2px;
+	padding: 1rem;
 	margin: 0px;
 	background-color: #FCFCFC;
 	outline-offset: none;
@@ -344,7 +344,7 @@ conditions, unless such conditions are required by law.
 	padding: 12px;
 	vertical-align: top;
 	resize: vertical;
-	font-size: 1rem;
+	font-size: 1em;
 	font-family: inherit;
 }
 
@@ -418,7 +418,7 @@ conditions, unless such conditions are required by law.
 .hashover .hashover-footer *,
 .hashover .hashover-form-footer * {
 	vertical-align: top;
-	line-height: 16px;
+	/* line-height: 16px; */
 }
 
 .hashover .hashover-post-button:hover,
@@ -479,8 +479,8 @@ conditions, unless such conditions are required by law.
 
 .hashover .hashover-inputs input {
 	width: 100%;
-	font-size: 1rem;
-	color: #808080;
+	font-size: 1em;
+	/* color: #808080; */
 }
 
 .hashover .hashover-required-input > * input {
@@ -488,7 +488,7 @@ conditions, unless such conditions are required by law.
 }
 
 .hashover .hashover-inputs input:focus {
-	color: #222222;
+	/* color: #222222; */
 }
 
 .hashover .hashover-inputs > :first-child {
@@ -539,11 +539,13 @@ conditions, unless such conditions are required by law.
 	background-color: #FCFCFC;
 }
 
-.hashover .hashover-inputs label,
+.hashover .hashover-inputs label {
+	display: inline-block;
+	/* margin-bottom: 0.5em; */
+}
 .hashover .hashover-comment-label {
 	display: inline-block;
 	padding: 5px 5px 11px 5px;
-	background-color: rgba(200, 200, 200, 0.25);
 	margin-bottom: -6px;
 
 	-moz-border-radius: 4px 4px 0px 0px;
@@ -1006,13 +1008,18 @@ conditions, unless such conditions are required by law.
 	padding-left: 8px;
 }
 
+.hashover .hashover-comment .hashover-thread-link {
+	font-size: 0.8em;
+}
+
 .hashover .hashover-formatting,
 .hashover .hashover-comment .hashover-buttons a {
 	display: inline-block;
 	vertical-align: top;
 	min-height: 16px;
+	font-size: 0.8em;
 	/* padding-left: 30px; */
-	line-height: 16px;
+	/* line-height: 16px; */
 	/* background-image: url('../../images/inputs-and-buttons.png');
 	background-repeat: no-repeat;
 	background-attachment: scroll; */
@@ -1196,19 +1203,19 @@ conditions, unless such conditions are required by law.
 .hashover.hashover-vector .hashover-input-cell > div:before,
 .hashover.hashover-vector .hashover-required-input > *:after,
 .hashover.hashover-vector .hashover-comment .hashover-buttons a {
-	background-image: url('../../images/inputs-and-buttons.svg');
+	/* background-image: url('../../images/inputs-and-buttons.svg'); */
 }
 
 /* overrides */
 
 .hashover .hashover-date {
-	font-size: 0.6rem;
+	font-size: 0.8em;
 }
 
 .hashover #hashover-post-button {
 	background-color: blue;
 	color: white;
-	font-size: 1rem;
+	font-size: 1em;
 }
 
 .hashover .hashover-form-footer .hashover-form-buttons {
@@ -1221,11 +1228,11 @@ conditions, unless such conditions are required by law.
 	width: 100%;
 	background-color: blue;
 	color: white;
-	font-size: 1rem;
+	font-size: 1em;
 }
 
 #hashover-end-links {
-	font-size: 0.8rem;
+	font-size: 0.8em;
 }
 
 .hashover-moderation-warning {
