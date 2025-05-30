@@ -334,6 +334,7 @@ class FormUI
 	// Creats a comment form, ie. main/reply/edit
 	protected function commentForm (HTMLTag $form, $type, $placeholder, $text, $permalink = '')
 	{
+
 		// Reply/edit form indicator
 		$is_form = !empty ($permalink);
 
@@ -611,7 +612,9 @@ class FormUI
 		));
 
 		// Add "Post Comment" element to primary form wrapper
-		$form_section->appendChild ($post_title);
+		if ($this->setup->commentsClosed === false) {
+			$form_section->appendChild ($post_title);
+		}
 
 		// Create element for various messages when needed
 		$message_container = new HTMLTag ('div', array (
@@ -924,7 +927,15 @@ class FormUI
 		$main_form->appendChild ($main_form_footer);
 
 		// Add main form element to primary form wrapper
-		$form_section->appendChild ($main_form);
+		if ($this->setup->commentsClosed === true) {
+			$comments_closed_message = new HTMLTag ('p', array(
+				'class' => 'hashover-comments-closed-message',
+				'innerHTML' => 'Comments are closed.'
+			));
+			$form_section->appendChild ($comments_closed_message);
+		} else {
+			$form_section->appendChild ($main_form);
+		}
 
 		// Check if form position setting set to 'top'
 		if ($this->setup->formPosition !== 'bottom') {

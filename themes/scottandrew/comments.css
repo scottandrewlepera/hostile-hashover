@@ -1235,7 +1235,8 @@ conditions, unless such conditions are required by law.
 	font-size: 0.8em;
 }
 
-.hashover-moderation-warning {
+.hashover-moderation-warning,
+.hashover-comments-closed-message {
   padding: 1rem;
   text-align: center;
 }

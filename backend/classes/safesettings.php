@@ -81,6 +81,10 @@ class SafeSettings
 	public $minifiesJavascript	= false;			// Whether JavaScript output should be minified
 	public $minifyLevel		= 1;				// How much to minify JavaScript code, options: 1, 2, 3, 4
 
+	/* custom settings */
+	
 	public $allowHTML		= false; // allow/disallow HTML in comments
 	public $showSortOptions = false;  // show/suppress sorting dropdown UI
+	public $commentsClosed = false; // closes comments sitewide
+	public $commentsEnabled = true; // enables/disables comments sitewide
 }
