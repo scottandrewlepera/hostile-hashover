@@ -647,13 +647,13 @@ conditions, unless such conditions are required by law.
 .hashover a:link,
 .hashover .hashover-fake-link {
 	text-decoration: none;
-	color: #0000CC;
+	/* color: #0000CC; */
 	outline: none;
 	cursor: pointer;
 }
 
 .hashover a:visited {
-	color: #00268F;
+	/* color: #00268F; */
 }
 
 .hashover a:hover,
@@ -1011,13 +1011,13 @@ conditions, unless such conditions are required by law.
 	display: inline-block;
 	vertical-align: top;
 	min-height: 16px;
-	padding-left: 30px;
+	/* padding-left: 30px; */
 	line-height: 16px;
-	background-image: url('../../images/inputs-and-buttons.png');
+	/* background-image: url('../../images/inputs-and-buttons.png');
 	background-repeat: no-repeat;
-	background-attachment: scroll;
-	opacity: 0.75;
-	filter: alpha(opacity=75);
+	background-attachment: scroll; */
+	/* opacity: 0.75;
+	filter: alpha(opacity=75); */
 }
 
 .hashover .hashover-formatting:hover,
@@ -1030,7 +1030,7 @@ conditions, unless such conditions are required by law.
 .hashover .hashover-formatting:hover,
 .hashover .hashover-comment .hashover-buttons a,
 .hashover .hashover-comment .hashover-buttons a:hover {
-	color: #111111;
+	/* color: #111111; */
 }
 
 .hashover .hashover-has-email {
