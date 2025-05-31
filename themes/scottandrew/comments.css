@@ -397,11 +397,11 @@ conditions, unless such conditions are required by law.
 	box-shadow: 0px 0px 2px #BFEFFF ! important;
 }
 
-.hashover .hashover-submit {
+/* .hashover .hashover-submit {
 	background-color: #F5F8FC;
 	padding: 6px 10px 6px 10px;
 	margin-left: 5px;
-}
+} */
 
 .hashover .hashover-post-button,
 .hashover .hashover-reply-post,
