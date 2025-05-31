@@ -521,6 +521,17 @@ class FormUI
 		return urlencode (urldecode ($url));
 	}
 
+	protected function commentsShouldBeClosed() {
+		if ($this->setup->commentsClosed === true) {
+			return true;
+		}
+		if ($this->setup->commentLimit !== 0 &&
+				$this->commentCounts['total'] > $this->setup->commentLimit) {
+				return true;
+		}
+		return false;
+	}
+
 	// Creates the main HashOver element
 	protected function createMainElement ()
 	{
@@ -612,7 +623,7 @@ class FormUI
 		));
 
 		// Add "Post Comment" element to primary form wrapper
-		if ($this->setup->commentsClosed === false) {
+		if ($this->commentsShouldBeClosed() === false) {
 			$form_section->appendChild ($post_title);
 		}
 
@@ -927,7 +938,7 @@ class FormUI
 		$main_form->appendChild ($main_form_footer);
 
 		// Add main form element to primary form wrapper
-		if ($this->setup->commentsClosed === true) {
+		if ($this->commentsShouldBeClosed() === true) {
 			$comments_closed_message = new HTMLTag ('p', array(
 				'class' => 'hashover-comments-closed-message',
 				'innerHTML' => 'Comments are closed.'
