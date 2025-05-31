@@ -3,46 +3,40 @@ require ( __DIR__  . '/../backend/php-setup.php');
 
 try {
     $hashover = new \Hashover("json");
-    $database = new \Hashover\Database($hashover->setup);
+    $overview = new \Hashover\RSSOverview($hashover->setup);
 
 } catch (\Exception $error) {
     return;
 }
 
 // exit if no RSS token
-if (!isset($hashover->setup->rssToken) || 
-    $hashover->setup->rssToken === '' ||
-    $_GET['t'] !== $hashover->setup->rssToken) {
+if ($overview->checkRSSToken ($_GET['t']) === false) {
     return;
 }
 
 // Set content type to RSS XML
 header("Content-Type: text/xml; charset=UTF-8");
 
-// Path to your SQLite database file
-$dbFile = __DIR__ . '/../comments/hashover.sqlite'; // Change this to match your DB filename
-
 try {
-    $comments = $database->getRssOverview();
+    $comments = $overview->getRssOverview ();
     // Output RSS XML
 
-    $serverName = htmlspecialchars($_SERVER['SERVER_NAME']);
-    $lastBuildDate = date('r');
+    $serverName = htmlspecialchars ($_SERVER['SERVER_NAME']);
+    $lastBuildDate = date ('r');
 
     $commentsXML = '';
     foreach ($comments as $comment) {
-        $pageURL =   htmlspecialchars($comment['page_url'] ?? '');
-        $pageTitle = htmlspecialchars($comment['page_title'] ?? '');
-        $commentBody = htmlspecialchars($comment['body'] ?? '');
-        $pubDate = date('r', strtotime($comment['date']));
-        $commentID = htmlspecialchars($comment['comment']);
-        $guid = 'comment-' . $commentID ?? uniqid();
+        $pageURL =   htmlspecialchars ($comment['page_url'] ?? '');
+        $pageTitle = htmlspecialchars ($comment['page_title'] ?? '');
+        $commentBody = htmlspecialchars ($comment['body'] ?? '');
+        $pubDate = date('r', strtotime ($comment['date']));
+        $commentID = htmlspecialchars ($comment['comment']);
+        $guid = "comment-$commentID-" . uniqid ();
         $itemXML = <<<STOP
         <item>
             <title><![CDATA[New comment on $pageTitle]]></title>
-            <description><![CDATA[<p>New comment on $pageTitle<p><p><a href="$pageURL#hashover-c$comment">$pageURL</a></p>
-            <p>$commentBody</p>]]>
-            </description>
+            <description><![CDATA[<p>New comment on $pageTitle<p><p><a href="$pageURL#hashover-c$commentID">$pageURL</a></p>
+            <p>$commentBody</p>]]></description>
             <pubDate>$pubDate</pubDate>
             <guid isPermaLink="false">$guid</guid>
         </item>
@@ -66,6 +60,6 @@ try {
     echo $rss;
 } catch (PDOException $e) {
     http_response_code(500);
-    echo "Database error: " . htmlspecialchars($e->getMessage());
+    echo "Database error: " . htmlspecialchars ($e->getMessage());
     exit;
 }
