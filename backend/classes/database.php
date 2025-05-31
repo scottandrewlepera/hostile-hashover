@@ -460,4 +460,20 @@ class Database extends Secrets
 	// These methods are not necessary in SQL
 	public function addLatestComment () {}
 	public function removeFromLatest () {}
+
+	// returns site-wide overview of comments for RSS
+	public function getRssOverview () {
+
+		$statement = 'SELECT comments.*, "page-info".title as page_title, "page-info".url as page_url FROM comments join "page-info" on "page-info".thread = comments.thread ORDER BY date DESC LIMIT 15';
+
+		$results = $this->executeStatement ($statement);
+
+		// Check if query was successful
+		if ($results !== false) {
+			// If so, fetch all rows in column
+			return $results->fetchAll (\PDO::FETCH_ASSOC);
+		}
+		// Otherwise, return an empty array
+		return array ();
+	}
 }

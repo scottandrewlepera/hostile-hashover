@@ -87,4 +87,5 @@ class SafeSettings
 	public $showSortOptions = false;  // show/suppress sorting dropdown UI
 	public $commentsClosed = false; // closes comments sitewide
 	public $commentsDisabled = false; // enables/disables comments sitewide
+	public $rssToken = ''; // non-empty value required to enable sitewide RSS feed
 }
