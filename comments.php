@@ -30,6 +30,12 @@ try {
 	// Load user settings
 	$setup->loadFrontendSettings ();
 
+	// Exit if comments are disabled sitewide
+	if ($setup->commentsDisabled === true) {
+		echo "(() => {document.getElementById('hashover').remove();})();", PHP_EOL;
+		return;
+	}
+
 	// Instantiate HashOver statistics class
 	$statistics = new Statistics ('javascript');
 

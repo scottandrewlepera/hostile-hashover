@@ -86,5 +86,5 @@ class SafeSettings
 	public $allowHTML		= false; // allow/disallow HTML in comments
 	public $showSortOptions = false;  // show/suppress sorting dropdown UI
 	public $commentsClosed = false; // closes comments sitewide
-	public $commentsEnabled = true; // enables/disables comments sitewide
+	public $commentsDisabled = false; // enables/disables comments sitewide
 }
