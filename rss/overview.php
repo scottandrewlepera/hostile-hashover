@@ -14,9 +14,6 @@ if ($overview->checkRSSToken ($_GET['t']) === false) {
     return;
 }
 
-// Set content type to RSS XML
-header("Content-Type: text/xml; charset=UTF-8");
-
 try {
     $comments = $overview->getRssOverview ();
     // Output RSS XML
@@ -49,7 +46,7 @@ try {
     <rss version="2.0">
         <channel>
             <title>Hashover Recent Comments Feed</title>
-            <link>$serverName</link>
+            <link>https://$serverName</link>
             <description>The 15 most recent comments</description>
             <language>en-us</language>
             <lastBuildDate>$lastBuildDate</lastBuildDate>
@@ -57,9 +54,10 @@ try {
         </channel>
     </rss>
     ENDRSS;
+    header("Content-Type: application/rss+xml; charset=UTF-8");
     echo $rss;
 } catch (PDOException $e) {
     http_response_code(500);
-    echo "Database error: " . htmlspecialchars ($e->getMessage());
+    echo "Error: " . htmlspecialchars ($e->getMessage());
     exit;
 }
