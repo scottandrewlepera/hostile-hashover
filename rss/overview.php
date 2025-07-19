@@ -19,7 +19,11 @@ try {
     // Output RSS XML
 
     $serverName = htmlspecialchars ($_SERVER['SERVER_NAME']);
-    $lastBuildDate = date ('r');
+
+    // get first comment and use the date as the most recent build date
+    $firstComment = reset($comments);
+
+    $lastBuildDate = date('r', strtotime ($firstComment['date']));
 
     $commentsXML = '';
     foreach ($comments as $comment) {
@@ -55,6 +59,7 @@ try {
     </rss>
     ENDRSS;
     header("Content-Type: application/rss+xml; charset=UTF-8");
+    // header("Content-Type: text/xml; charset=UTF-8");
     echo $rss;
 } catch (PDOException $e) {
     http_response_code(500);
