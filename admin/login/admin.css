@@ -365,12 +365,6 @@ a.docs-link:hover {
 	color: transparent;
 }
 
-.hashover-moderate-button {
-	display: inline-block;
-	border: 1px solid;
-	padding: 0.2rem 0.5rem;
-}
-
 @media only screen and (max-width: 800px) {
 	body {
 		padding-left: 15px;

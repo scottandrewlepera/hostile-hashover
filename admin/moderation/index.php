@@ -106,6 +106,16 @@ try {
 		// Create row div
 		$div = new HTMLTag ('div');
 
+		// Add thread URL line to row div
+		$div->appendChild (new HTMLTag ('p', array (
+			'children' => array (
+				new HTMLTag ('a', array (
+					'href' => $data['url'],
+					'innerHTML' => $data['title']
+				))
+			)
+		)));
+
 		// Add thread hyperlink to row div
 		$div->appendChild (new HTMLTag ('a', array (
 			'href' => 'threads.php?' . implode ('&amp;', array (
@@ -114,14 +124,10 @@ try {
 				'title=' . urlencode ($data['title']),
 				'url=' . urlencode ($data['url'])
 			)),
-
-			'innerHTML' => $data['title']
+			'class' => 'hashover-moderate-button',
+			'innerHTML' => 'Moderate'
 		)));
 
-		// Add thread URL line to row div
-		$div->appendChild (new HTMLTag ('p', array (
-			'children' => array (new HTMLTag ('small', $data['url'], false))
-		)));
 
 		// And row div to table body
 		add_table_row ($threads_body, $div);
