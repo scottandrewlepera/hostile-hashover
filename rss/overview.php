@@ -32,7 +32,7 @@ try {
         $commentBody = htmlspecialchars ($comment['body'] ?? '');
         $pubDate = date('r', strtotime ($comment['date']));
         $commentID = htmlspecialchars ($comment['comment']);
-        $guid = "comment-$commentID-" . uniqid ();
+        $guid = "comment-$commentID";
         $itemXML = <<<STOP
         <item>
             <title><![CDATA[New comment on $pageTitle]]></title>
@@ -58,8 +58,8 @@ try {
         </channel>
     </rss>
     ENDRSS;
-    header("Content-Type: application/rss+xml; charset=UTF-8");
-    // header("Content-Type: text/xml; charset=UTF-8");
+    // header("Content-Type: application/rss+xml; charset=UTF-8");
+    header("Content-Type: text/xml; charset=UTF-8");
     echo $rss;
 } catch (PDOException $e) {
     http_response_code(500);
