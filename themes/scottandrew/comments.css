@@ -1095,6 +1095,10 @@ conditions, unless such conditions are required by law.
 	color: transparent;
 }
 
+.hashover .hashover-deleted {
+	display: none;
+}
+
 .hashover .hashover-deleted > .hashover-header > .hashover-comment-name {
 	color: #CC0000;
 }
