@@ -29,6 +29,7 @@ class Thread
 	public $primaryDeletedCount = 0;
 	public $collapsedDeletedCount = 0;
 	public $totalDeletedCount = 0;
+	public $pendingCount = 0;
 
 	public function __construct (Setup $setup)
 	{
@@ -89,6 +90,14 @@ class Thread
 		} else {
 			// If not, create thread comment count
 			$this->threadCount[$comment] = 1;
+		}
+
+		$obj = $this->data->read ($comment);
+		if ($obj !== false) {
+		// Count pending status comments
+			if (Misc::getArrayItem ($obj, 'status') === 'pending') {
+				$this->pendingCount++;
+			}
 		}
 
 		// Increase total comment count
