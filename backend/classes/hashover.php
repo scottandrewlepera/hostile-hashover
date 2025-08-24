@@ -148,6 +148,13 @@ class HashOver
 		$this->commentCount = $this->getCommentCount ();
 	}
 
+	// reset with blank thread; needed for loops that
+	// read info for multiple threads
+	public function resetThread ()
+	{
+		$this->thread = new HashOver\Thread ($this->setup);
+	}
+
 	// Save various metadata about the page
 	public function defaultMetadata ()
 	{
