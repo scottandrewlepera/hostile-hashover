@@ -74,6 +74,7 @@ try {
 	}
 
 	// Attempt to get array of comment threads
+	// threads = a page with comments (sans the actual comments)
 	$threads = $hashover->thread->queryThreads ();
 
 	// Create comment thread table
@@ -95,9 +96,14 @@ try {
 
 	// Run through comment threads
 	foreach ($threads as $thread) {
+
+		$hashover->setup->setThreadName ($thread);
+		$hashover->resetThread ();
+		$hashover->initiate ();
+		$hashover->finalize ();
+
 		// Read and parse JSON metadata file
 		$data = $hashover->thread->data->readMeta ('page-info', $thread);
-
 		// Check if metadata was read successfully
 		if ($data === false or empty ($data['url']) or empty ($data['title'])) {
 			continue;
@@ -128,6 +134,9 @@ try {
 			'innerHTML' => 'Moderate'
 		)));
 
+		$div->appendChild( new HTMLTag ('span', array(
+			'innerHTML' => $hashover->thread->pendingCount . ' pending | ' . $hashover->getCommentCount() . ' total'
+		)));
 
 		// And row div to table body
 		add_table_row ($threads_body, $div);
